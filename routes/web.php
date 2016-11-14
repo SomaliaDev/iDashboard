@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth']],function ($router)
+Route::group(['namespace' => 'Admin','middleware' => ['auth']],function ($router)
 {
 	$router->get('/dash','DashboardController@index')->name('system.index');
 	$router->get('/i18n', 'DashboardController@dataTableI18n');

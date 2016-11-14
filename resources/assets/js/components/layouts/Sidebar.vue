@@ -4,7 +4,7 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                              <img alt="image" class="img-circle" src="img/profile_small.jpg">
+                              <img alt="image" class="img-circle" src="/admin/img/profile_small.jpg">
                                </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
@@ -22,10 +22,29 @@
                     IN+
                 </div>
             </li>
+            <template v-for="item of sidebar">
+              <template v-if="item.child.length > 0">
+                <li>
+                  <a href="javascript:;">
+                    <i v-bind:class="item.icon"></i>
+                    <span class="nav-label">{{item.name}}</span>
+                    <span class="fa arrow"></span>
+                  </a>
+                  <ul class="nav nav-second-level collapse in">
+                    <router-link v-for="v of item.child" v-bind:to="v.url" tag="li">
+                      <a><i v-bind:class="v.icon"></i> {{v.name}}</a>
+                    </router-link>
+                  </ul>
+                </li>
+              </template>
+              <router-link v-if="item.child.length == 0" v-bind:to="item.url" tag="li">
+                <a><i v-bind:class="item.icon"></i> <span class="nav-label">{{item.name}}</span></a>
+              </router-link>
+            </template>
             <li>
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="">Dashboard v.1</a></li>
+                    <li><a href="/permission">Dashboard v.1</a></li>
                     <li><a href="">Dashboard v.2</a></li>
                     <li><a href="">Dashboard v.3</a></li>
                     <li><a href="">Dashboard v.4</a></li>
@@ -38,23 +57,27 @@
             <li>
               <router-link to="/permission">Go to Permission</router-link>
             </li>
-            <li>
-                <a href="/admin/dash"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="">Flot Charts</a></li>
-                    <li><a href="">Morris.js Charts</a></li>
-                    <li><a href="">Rickshaw Charts</a></li>
-                    <li><a href="">Chart.js</a></li>
-                    <li><a href="">Chartist</a></li>
-                    <li><a href="">c3 charts</a></li>
-                    <li><a href="">Peity Charts</a></li>
-                    <li><a href="">Sparkline Charts</a></li>
-                </ul>
-            </li>
         </ul>
     </div>
 </nav>
 </template>
+<script>
+export default {
+  data (){
+    return {
+      sidebar:{}
+    }
+  },
+  mounted () {
+    this.fetchSidebarMenu()
+  },
+  methods: {
+    fetchSidebarMenu () {
+      this.$http.get('http://idashboard.app/menu').then(response => {
+        console.log(response.data);
+        this.sidebar = response.data
+      });
+    }
+  }
+}
+</script>

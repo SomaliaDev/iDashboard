@@ -24,7 +24,8 @@ class MenuController extends Controller
     public function index()
     {
         $menus = $this->menu->getMenuList();
-        return view('admin.menu.list')->with(compact('menus'));
+        return response()->json($menus);
+        // return view('admin.menu.list')->with(compact('menus'));
     }
 
     /**
