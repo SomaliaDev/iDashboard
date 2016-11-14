@@ -1,0 +1,60 @@
+<template>
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                              <img alt="image" class="img-circle" src="img/profile_small.jpg">
+                               </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
+                               </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            <li>
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="">Dashboard v.1</a></li>
+                    <li><a href="">Dashboard v.2</a></li>
+                    <li><a href="">Dashboard v.3</a></li>
+                    <li><a href="">Dashboard v.4</a></li>
+                    <li><a href="">Dashboard v.5 </a></li>
+                </ul>
+            </li>
+            <li>
+              <router-link to="/dash">Go to Dash</router-link>
+            </li>
+            <li>
+              <router-link to="/permission">Go to Permission</router-link>
+            </li>
+            <li>
+                <a href="/admin/dash"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="">Flot Charts</a></li>
+                    <li><a href="">Morris.js Charts</a></li>
+                    <li><a href="">Rickshaw Charts</a></li>
+                    <li><a href="">Chart.js</a></li>
+                    <li><a href="">Chartist</a></li>
+                    <li><a href="">c3 charts</a></li>
+                    <li><a href="">Peity Charts</a></li>
+                    <li><a href="">Sparkline Charts</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+</template>
