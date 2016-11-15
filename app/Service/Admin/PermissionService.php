@@ -26,9 +26,9 @@ class PermissionService extends BaseService
 		// datatables请求次数
 		$draw = request('draw', 1);
 		// 开始条数
-		$start = request('start', config('admin.golbal.list.start'));
+		$start = request('start', config('admin.global.list.start'));
 		// 每页显示数目
-		$length = request('length', config('admin.golbal.list.length'));
+		$length = request('length', config('admin.global.list.length'));
 		// datatables是否启用模糊搜索
 		$search['regex'] = request('search.regex', false);
 		// 搜索框中的值
@@ -42,9 +42,9 @@ class PermissionService extends BaseService
 		$permissions = [];
 
 		if ($result['permissions']) {
-			foreach ($result['permissions'] as $v) {
-				$v->actionButton = $v->getActionButtonAttribute();
-				$permissions[] = $v;
+			foreach ($result['permissions'] as $k => $v) {
+				// $v->actionButton = $v->getActionButtonAttribute();
+				$permissions[] = $v->toArray();
 			}
 		}
 
@@ -131,6 +131,6 @@ class PermissionService extends BaseService
 			$this->sendSystemErrorMail(env('MAIL_SYSTEMERROR',''),$e);
 			return false;
 		}
-		
+
 	}
 }

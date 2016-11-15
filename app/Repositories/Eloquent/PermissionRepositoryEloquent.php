@@ -41,7 +41,9 @@ class PermissionRepositoryEloquent extends BaseRepository implements PermissionR
         }
 
         $count = $permission->count();
-        
+        if (!$order['name']) {
+          $order['name'] = 'id';
+        }
         $permission = $permission->orderBy($order['name'], $order['dir']);
 
         $permissions = $permission->offset($start)->limit($length)->get();
